@@ -1,11 +1,18 @@
 package com.unmsm.oevbackend.service.interfaces;
 
 import com.unmsm.oevbackend.dto.response.record.PresignedUrlDTO;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
+
+@Service
+@ConditionalOnProperty(name = "aws.s3.enabled", havingValue = "true")
 
 public interface IS3Service {
 

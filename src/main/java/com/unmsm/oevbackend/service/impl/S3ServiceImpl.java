@@ -4,6 +4,7 @@ import com.unmsm.oevbackend.dto.response.record.PresignedUrlDTO;
 import com.unmsm.oevbackend.service.interfaces.IS3Service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import software.amazon.awssdk.core.sync.RequestBody;
@@ -20,6 +21,8 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+@ConditionalOnProperty(name = "aws.s3.enabled", havingValue = "true")
+
 public class S3ServiceImpl implements IS3Service {
 
     private final S3Client s3Client;

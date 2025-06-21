@@ -3,6 +3,7 @@ package com.unmsm.oevbackend.controller;
 import com.unmsm.oevbackend.dto.response.record.PresignedUrlDTO;
 import com.unmsm.oevbackend.service.interfaces.IS3Service;
 import lombok.RequiredArgsConstructor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +16,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/s3")
 @RequiredArgsConstructor
+@ConditionalOnProperty(name = "aws.enabled", havingValue = "true")
+
 public class AmazonRestController {
 
     private final IS3Service s3Service;
